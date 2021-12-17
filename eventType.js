@@ -5,7 +5,7 @@ export default avro.Type.forSchema({
   fields: [
     {
       name: 'category',
-      type: { type: 'enum', symbols: ['DOG', 'CAT'] }
+      type: { type: 'enum', symbols: ['CAT', 'DOG',"MONKEY","LIONESS","SHEEP"] }
     },
     {
       name: 'noise',

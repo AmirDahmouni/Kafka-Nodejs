@@ -4,7 +4,7 @@ import eventType from '../eventType.js';
 const stream = Kafka.Producer.createWriteStream({
   'metadata.broker.list': 'localhost:9092'
 }, {}, {
-  topic: 'test'
+  topic: 'big_data'
 });
 
 stream.on('error', (err) => {
@@ -25,22 +25,34 @@ function queueRandomMessage() {
 }
 
 function getRandomAnimal() {
-  const categories = ['CAT', 'DOG'];
+  const categories = ['CAT', 'DOG',"MONKEY","LIONESS","SHEEP"];
   return categories[Math.floor(Math.random() * categories.length)];
 }
 
 function getRandomNoise(animal) {
-  if (animal === 'CAT') {
-    const noises = ['meow', 'purr'];
-    return noises[Math.floor(Math.random() * noises.length)];
-  } else if (animal === 'DOG') {
-    const noises = ['bark', 'woof'];
-    return noises[Math.floor(Math.random() * noises.length)];
-  } else {
-    return 'silence..';
-  }
+  switch(animal)
+  {
+    case "CAT":{
+      const noises = ['meow', 'miaaaw'];
+      return noises[Math.floor(Math.random() * noises.length)];
+    }
+    case 'DOG':{
+      const noises = ['wooooof',"habhab","hobhob"];
+      return noises[Math.floor(Math.random() * noises.length)];
+    }
+    case 'MONKEY':{
+      const noises = ['hoho', 'oooa',"houha"];
+      return noises[Math.floor(Math.random() * noises.length)];
+    }
+    case 'LIONESS':{
+      const noises = ['greeeeeee', 'ghaaaaaoui'];
+      return noises[Math.floor(Math.random() * noises.length)];
+    }
+    case "SHEEP": return "baaaaabaaaaa"
+    default :return "silence.."
+  } 
 }
 
 setInterval(() => {
   queueRandomMessage();
-}, 3000);
+}, 2000);

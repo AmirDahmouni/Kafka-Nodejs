@@ -10,7 +10,7 @@ consumer.connect();
 
 consumer.on('ready', () => {
   console.log('consumer ready..')
-  consumer.subscribe(['test']);
+  consumer.subscribe(['big_data']);
   consumer.consume();
 }).on('data', function(data) {
   console.log(`received message: ${eventType.fromBuffer(data.value)}`);
